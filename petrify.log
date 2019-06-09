@@ -1,0 +1,40 @@
+--------------------------
+| Input -> Input Delays: |
+--------------------------
+Average delay =  1.00 events
+Worst-case delay =  1.00 events
+Input events with worst-case delay: b+ a+ b- a-
+  > Input events preceding b+: b-(1) a-(1)
+  > Input events preceding a+: b-(1) a-(1)
+  > Input events preceding b-: b+(1) a+(1)
+  > Input events preceding a-: b+(1) a+(1)
+
+======================
+# Gates for signal c #
+======================
+
+c' = b' (a' + c') + c' a'
+[c] = c'        (output inverter)
+  > triggers(SET):     (b-,a-) -> c-
+  > triggers(RESET):   (b+,a+) -> c+
+  > 10 transistors (5 n, 5 p) + 1 inverters
+  > Estimated delay: rising = 25.46, falling = 26.83
+  > Speed independent (no timing assumptions)
+
+c = b (a + c) + c a
+  > triggers(SET):     (b+,a+) -> c+
+  > triggers(RESET):   (b-,a-) -> c-
+  > 10 transistors (5 n, 5 p) + 3 inverters
+  > Estimated delay: rising = 41.00, falling = 31.29
+  > Speed independent (no timing assumptions)
+
+====================
+| Selected circuit |
+====================
+
+c' = b' (a' + c') + c' a'
+[c] = c'        (output inverter)
+  > triggers(SET):     (b-,a-) -> c-
+  > triggers(RESET):   (b+,a+) -> c+
+  > 10 transistors (5 n, 5 p) + 1 inverters
+  > Estimated delay: rising = 25.46, falling = 26.83
